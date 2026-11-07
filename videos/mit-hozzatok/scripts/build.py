@@ -156,6 +156,11 @@ punch_sets = "\n".join(
     f'      tl.set("#kitti-wrap", {{ scale: {z}, y: 0 }}, {s:.3f});' for z, s in zip(PUNCH[1:], STARTS[1:]))
 punch_sets = '      tl.set("#kitti-wrap", { scale: 1.12, y: -150 }, 0);  // horog: arc feljebb, alatta a cím\n' + punch_sets
 
+# Amíg egy fotó teljesen látszik, Kitti képét elrejtjük alatta (különben a render halványan átengedi)
+punch_sets += "\n" + "\n".join(
+    f'      tl.set("#kitti-wrap", {{ opacity: 0 }}, {cut(pa) + 0.22:.3f});\n'
+    f'      tl.set("#kitti-wrap", {{ opacity: 1 }}, {cut(pb) - 0.16:.3f});' for _, pa, pb, _ in PHOTOS)
+
 music_lane = json.dumps({"version": 1, "lanes": [{"target": "volume", "points": [
     {"t": 0, "v": 0.13}, {"t": round(CUT_LEN - 0.3, 2), "v": 0.13},
     {"t": round(CUT_LEN + 0.3, 2), "v": 0.42}, {"t": TOTAL, "v": 0.42}]}]}).replace('"', "&quot;")
