@@ -1,0 +1,30 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; font-family: "Poppins", sans-serif; }
+    #end-bg { position: absolute; inset: 0; background: var(--cream, #F6E4C6); transform-origin: 50% 100%; }
+    #end-logo { position: absolute; left: 290px; top: 230px; width: 500px; height: auto; }
+    #end-text { position: absolute; left: 0; right: 0; top: 1000px; text-align: center; color: var(--ink, #2A211B); }
+    .end-l1 { font-weight: 800; font-size: 66px; line-height: 1.1; letter-spacing: -0.015em; }
+    .end-l2 { font-weight: 600; font-size: 46px; margin-top: 18px; opacity: .85; }
+    .end-url {
+      display: inline-block; margin-top: 34px; padding: 12px 34px; border-radius: 999px;
+      background: var(--accent, #FFC83F); font-weight: 700; font-size: 48px;
+    }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
+    <div id="end-bg" class="clip" data-start="0" data-duration="2.95"></div>
+    <img id="end-logo" class="clip" src="assets/logo.png" alt="Mosolyművész" data-start="0.15" data-duration="2.8" />
+    <div id="end-text" class="clip" data-start="0.35" data-duration="2.6">
+      <div class="end-l1">Szabad karácsonyi<br />időpontok</div>
+      <div class="end-l2">Link az első kommentben</div>
+      <div class="end-url">mosolymuvesz.hu</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#end-bg", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.inOut" }, 0);
+    tl.fromTo("#end-logo", { opacity: 0, scale: 0.8, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "back.out(1.4)" }, 0.15);
+    tl.fromTo("#end-text", { opacity: 0, y: 24, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0.35);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

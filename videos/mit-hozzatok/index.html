@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="hu" data-composition-variables='[
+  {"id":"accent","type":"color","label":"Kiemelőszín","default":"#FFC83F"},
+  {"id":"ink","type":"color","label":"Sötét szövegszín","default":"#2A211B"}
+]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --accent: #FFC83F;
+        --ink: #2A211B;
+        --cream: #F6E4C6;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #111; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; font-family: "Poppins", sans-serif; }
+      #kitti-wrap { position: absolute; inset: 0; transform-origin: 50% 32%; }
+      #kitti { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="75.6" data-width="1080" data-height="1920">
+      <div id="kitti-wrap">
+        <video id="kitti" class="clip" src="assets/kitti_cut.mp4" data-start="0" data-duration="72.9"
+          data-track-index="0" data-has-audio="true" data-volume="1" playsinline data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0.04,&quot;contrast&quot;:0.06,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0.14,&quot;tint&quot;:0.02,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0,&quot;grainSize&quot;:0.25,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}"></video>
+      </div>
+
+      <div id="photos" data-composition-id="photos" data-composition-src="compositions/photos.html"
+        data-start="0" data-duration="72.9" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="chapters" data-composition-id="chapters" data-composition-src="compositions/chapters.html"
+        data-start="0" data-duration="72.9" data-track-index="2" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:3"></div>
+
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html"
+        data-start="0" data-duration="72.9" data-track-index="3" data-track-kind="captions"
+        data-width="1080" data-height="1920" style="z-index:4"></div>
+
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html"
+        data-start="72.65" data-duration="2.95" data-track-index="4"
+        data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+
+      <audio id="music" class="clip" src="assets/music/cheerful-joyful-playful.mp3" data-start="0"
+        data-duration="75.6" data-track-index="5" data-volume="1" data-fade-in="0.4" data-fade-out="0.9"
+        data-automation="{&quot;version&quot;: 1, &quot;lanes&quot;: [{&quot;target&quot;: &quot;volume&quot;, &quot;points&quot;: [{&quot;t&quot;: 0, &quot;v&quot;: 0.13}, {&quot;t&quot;: 72.6, &quot;v&quot;: 0.13}, {&quot;t&quot;: 73.2, &quot;v&quot;: 0.42}, {&quot;t&quot;: 75.6, &quot;v&quot;: 0.42}]}]}"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Közelítés váltása minden vágásnál (szakaszkezdetek a vágott idővonalon)
+      tl.set("#kitti-wrap", { scale: 1.12, y: -150 }, 0);  // horog: arc feljebb, alatta a cím
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 2.300);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 3.300);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 7.467);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 18.633);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 22.500);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 23.633);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 24.467);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 29.900);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 37.633);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 38.767);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 41.867);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 51.500);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 52.633);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 55.600);
+      tl.set("#kitti-wrap", { scale: 1.1, y: 0 }, 63.100);
+      tl.set("#kitti-wrap", { scale: 1.0, y: 0 }, 65.933);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,114 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .ph, .ph-layer { position: absolute; inset: 0; }
+    .ph-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .ph-card {
+      position: absolute; overflow: hidden; border-radius: 26px; border: 10px solid #FFFDF8;
+      box-shadow: 0 30px 70px rgba(0,0,0,.35);
+    }
+    .ph-img { width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 50%; }
+  </style>
+  <div id="root" data-composition-id="photos" data-width="1080" data-height="1920">
+    <div id="ph-0" class="ph clip" data-start="4.44" data-duration="3.027">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/Boti_1_eves-11-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:395px; width:960px; height:640px">
+          <img class="ph-img" src="assets/photos/Boti_1_eves-11.jpg" alt="" style="object-position:50% 50%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-1" class="ph clip" data-start="13.367" data-duration="5.266">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/KEP01888-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:395px; width:960px; height:640px">
+          <img class="ph-img" src="assets/photos/KEP01888.jpg" alt="" style="object-position:45% 50%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-2" class="ph clip" data-start="21.463" data-duration="2.157">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/Zitaek-7-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:423px; width:960px; height:583px">
+          <img class="ph-img" src="assets/photos/Zitaek-7.jpg" alt="" style="object-position:60% 45%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-3" class="ph clip" data-start="26.317" data-duration="6.983">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/Zsuzsiek-9-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:411px; width:960px; height:607px">
+          <img class="ph-img" src="assets/photos/Zsuzsiek-9.jpg" alt="" style="object-position:55% 50%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-4" class="ph clip" data-start="33.3" data-duration="4.33">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/Zitaek-2-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:413px; width:960px; height:604px">
+          <img class="ph-img" src="assets/photos/Zitaek-2.jpg" alt="" style="object-position:55% 45%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-5" class="ph clip" data-start="43.857" data-duration="7.64">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/Viki-12-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:263px; top:300px; width:553px; height:830px">
+          <img class="ph-img" src="assets/photos/Viki-12.jpg" alt="" style="object-position:50% 60%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-6" class="ph clip" data-start="55.6" data-duration="7.5">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/KEP07843-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:261px; top:300px; width:557px; height:830px">
+          <img class="ph-img" src="assets/photos/KEP07843.jpg" alt="" style="object-position:50% 45%" />
+        </div>
+      </div>
+    </div>
+    <div id="ph-7" class="ph clip" data-start="65.933" data-duration="4.13">
+      <div class="ph-layer">
+        <img class="ph-bg" src="assets/photos/KEP02968-Edit-bg.jpg" alt="" />
+        <div class="ph-card" data-layout-allow-overflow style="left:60px; top:385px; width:960px; height:659px">
+          <img class="ph-img" src="assets/photos/KEP02968-Edit.jpg" alt="" style="object-position:50% 50%" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ph-0 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 4.44);
+    tl.fromTo("#ph-0 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 4.44);
+    tl.fromTo("#ph-0 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 3.027, ease: "none" }, 4.44);
+    tl.to("#ph-0 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 7.327);
+    tl.fromTo("#ph-1 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 13.367);
+    tl.fromTo("#ph-1 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 13.367);
+    tl.fromTo("#ph-1 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 5.266, ease: "none" }, 13.367);
+    tl.to("#ph-1 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 18.493);
+    tl.fromTo("#ph-2 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 21.463);
+    tl.fromTo("#ph-2 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 21.463);
+    tl.fromTo("#ph-2 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 2.157, ease: "none" }, 21.463);
+    tl.to("#ph-2 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 23.48);
+    tl.fromTo("#ph-3 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 26.317);
+    tl.fromTo("#ph-3 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 26.317);
+    tl.fromTo("#ph-3 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 6.983, ease: "none" }, 26.317);
+    tl.to("#ph-3 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 33.16);
+    tl.fromTo("#ph-4 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 33.3);
+    tl.fromTo("#ph-4 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 33.3);
+    tl.fromTo("#ph-4 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 4.33, ease: "none" }, 33.3);
+    tl.to("#ph-4 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 37.49);
+    tl.fromTo("#ph-5 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 43.857);
+    tl.fromTo("#ph-5 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 43.857);
+    tl.fromTo("#ph-5 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 7.64, ease: "none" }, 43.857);
+    tl.to("#ph-5 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 51.357);
+    tl.fromTo("#ph-6 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 55.6);
+    tl.fromTo("#ph-6 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 55.6);
+    tl.fromTo("#ph-6 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 7.5, ease: "none" }, 55.6);
+    tl.to("#ph-6 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 62.96);
+    tl.fromTo("#ph-7 .ph-layer", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 65.933);
+    tl.fromTo("#ph-7 .ph-card", { scale: 0.94, filter: "blur(8px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 65.933);
+    tl.fromTo("#ph-7 .ph-img", { scale: 1.0 }, { scale: 1.06, duration: 4.13, ease: "none" }, 65.933);
+    tl.to("#ph-7 .ph-layer", { opacity: 0, duration: 0.14, ease: "power2.in" }, 69.923);
+    window.__timelines["photos"] = tl;
+  </script>
+</template>

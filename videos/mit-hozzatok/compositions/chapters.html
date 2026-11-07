@@ -1,0 +1,67 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; font-family: "Poppins", sans-serif; }
+    #hook { position: absolute; left: 0; right: 0; top: 1030px; text-align: center; }
+    #hook-chip { position: absolute; left: 0; right: 0; top: 196px; text-align: center; }
+    .hook-chip {
+      display: inline-block; padding: 8px 26px; border-radius: 999px; margin-bottom: 18px;
+      background: var(--accent, #FFC83F); color: var(--ink, #2A211B); font-weight: 700; font-size: 44px;
+    }
+    .hook-title {
+      font-weight: 800; font-size: 88px; line-height: 1.06; color: #fff; letter-spacing: -0.02em;
+      text-shadow: 0 4px 0 rgba(0,0,0,.45), 0 0 30px rgba(0,0,0,.45);
+    }
+    .hook-title .hl { color: var(--accent, #FFC83F); }
+    .chap { position: absolute; left: 0; right: 0; top: 196px; text-align: center; }
+    .chap-in {
+      display: inline-flex; align-items: center; gap: 16px; padding: 10px 30px 10px 12px; border-radius: 999px;
+      background: var(--accent, #FFC83F); color: var(--ink, #2A211B); font-weight: 700; font-size: 42px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .chap-num {
+      display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px;
+      border-radius: 50%; background: var(--ink, #2A211B); color: var(--accent, #FFC83F); font-size: 40px;
+    }
+  </style>
+  <div id="root" data-composition-id="chapters" data-width="1080" data-height="1920">
+    <div id="hook" class="clip" data-start="0" data-duration="2.29">
+      <div class="hook-in">
+        <div class="hook-title">Mit hozzatok magatokkal<br />a <span class="hl">fotózásra?</span></div>
+      </div>
+    </div>
+    <div id="hook-chip" class="clip" data-start="0" data-duration="2.29">
+      <div class="chap-in"><span class="chap-num">5</span><span class="chap-txt">tipp a fotózásra</span></div>
+    </div>
+    <div id="chap-1" class="chap clip" data-start="2.3" data-duration="21.32">
+      <div class="chap-in"><span class="chap-num">1</span><span class="chap-txt">Kedvenc játék, átmeneti tárgy</span></div>
+    </div>
+    <div id="chap-2" class="chap clip" data-start="23.633" data-duration="13.997">
+      <div class="chap-in"><span class="chap-num">2</span><span class="chap-txt">Kiegészítők</span></div>
+    </div>
+    <div id="chap-3" class="chap clip" data-start="37.633" data-duration="13.864">
+      <div class="chap-in"><span class="chap-num">3</span><span class="chap-txt">Egy fontos közös tárgy</span></div>
+    </div>
+    <div id="chap-4" class="chap clip" data-start="51.5" data-duration="11.6">
+      <div class="chap-in"><span class="chap-num">4</span><span class="chap-txt">Kedvenc könyv</span></div>
+    </div>
+    <div id="chap-5" class="chap clip" data-start="63.1" data-duration="6.963">
+      <div class="chap-in"><span class="chap-num">5</span><span class="chap-txt">Ti magatok és a jókedvetek</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.to("#hook-chip .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 2.13);
+    tl.to("#hook .hook-in", { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, 2.11);
+    tl.fromTo("#chap-1 .chap-in", { opacity: 0, y: -16, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 2.3);
+    tl.to("#chap-1 .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 23.46);
+    tl.fromTo("#chap-2 .chap-in", { opacity: 0, y: -16, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 23.633);
+    tl.to("#chap-2 .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 37.47);
+    tl.fromTo("#chap-3 .chap-in", { opacity: 0, y: -16, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 37.633);
+    tl.to("#chap-3 .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 51.337);
+    tl.fromTo("#chap-4 .chap-in", { opacity: 0, y: -16, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 51.5);
+    tl.to("#chap-4 .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 62.94);
+    tl.fromTo("#chap-5 .chap-in", { opacity: 0, y: -16, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 63.1);
+    tl.to("#chap-5 .chap-in", { opacity: 0, duration: 0.16, ease: "power2.in" }, 69.903);
+    window.__timelines["chapters"] = tl;
+  </script>
+</template>
