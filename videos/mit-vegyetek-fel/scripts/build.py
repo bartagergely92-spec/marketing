@@ -61,9 +61,21 @@ sets = ['      tl.set("#kitti-wrap", { scale: 1.12, y: -150 }, 0);  // horog: ar
 sets.append(f'      tl.set("#kitti-wrap", {{ scale: 1.0, y: 0 }}, {HOOK_TITLE_END:.3f});  // a cím után normál nézet')
 for z, s in list(zip(PUNCH, SEGS))[1:]:
     sets.append(f'      tl.set("#kitti-wrap", {{ scale: {z}, y: 0 }}, {s["start"]:.3f});')
-for p in E["photos"]:   # a teljesen látszó fotó/kártya alatt Kitti képe rejtve
-    sets.append(f'      tl.set("#kitti-wrap", {{ opacity: 0 }}, {p["start"] + 0.22:.3f});')
-    sets.append(f'      tl.set("#kitti-wrap", {{ opacity: 1 }}, {p["end"] - 0.16:.3f});')
+# Az egymást közvetlenül követő fotókat egy blokknak vesszük: köztük Kitti rejtve marad,
+# a következő fotó áttűnés nélkül (csak a kártya beúszásával) érkezik.
+PH = E["photos"]
+for i, p in enumerate(PH):
+    p["chain_in"] = i > 0 and abs(PH[i - 1]["end"] - p["start"]) < 0.05
+    p["chain_out"] = i + 1 < len(PH) and abs(PH[i + 1]["start"] - p["end"]) < 0.05
+blocks = []
+for p in PH:
+    if p["chain_in"]:
+        blocks[-1][1] = p["end"]
+    else:
+        blocks.append([p["start"], p["end"]])
+for bs, be in blocks:   # a teljesen látszó fotó/kártya alatt Kitti képe rejtve
+    sets.append(f'      tl.set("#kitti-wrap", {{ opacity: 0 }}, {bs + 0.22:.3f});')
+    sets.append(f'      tl.set("#kitti-wrap", {{ opacity: 1 }}, {be - 0.16:.3f});')
 
 music_lane = json.dumps({"version": 1, "lanes": [{"target": "volume", "points": [
     {"t": 0, "v": 0.12}, {"t": round(CUT_LEN - 0.3, 2), "v": 0.12},
@@ -171,7 +183,7 @@ for i, p in enumerate(E["photos"]):
         </div>
       </div>
     </div>''')
-        ph_js.append(f'''    tl.fromTo("#ph-{i} .ph-layer", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.25, ease: "power2.out" }}, {s});
+        ph_js.append(f'''    tl.fromTo("#ph-{i} .ph-layer", {{ opacity: 0 }}, {{ opacity: 1, duration: {0.001 if p["chain_in"] else 0.25}, ease: "power2.out" }}, {s});
     tl.fromTo("#ph-{i} .pal-card", {{ y: 40, scale: 0.96 }}, {{ y: 0, scale: 1, duration: 0.5, ease: "expo.out" }}, {s});''')
         for r in range(len(PALETTE)):
             ph_js.append(f'''    tl.fromTo("#pal-row-{r}", {{ opacity: 0, x: -30 }}, {{ opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }}, {round(s + 0.35 + r * 0.9, 3)});''')
@@ -189,10 +201,12 @@ for i, p in enumerate(E["photos"]):
         </div>
       </div>
     </div>''')
-    ph_js.append(f'''    tl.fromTo("#ph-{i} .ph-layer", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.2, ease: "power2.out" }}, {s});
+    fade_in = 0.001 if p["chain_in"] else 0.2
+    ph_js.append(f'''    tl.fromTo("#ph-{i} .ph-layer", {{ opacity: 0 }}, {{ opacity: 1, duration: {fade_in}, ease: "power2.out" }}, {s});
     tl.fromTo("#ph-{i} .ph-card", {{ scale: 0.94, filter: "blur(8px)" }}, {{ scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }}, {s});
-    tl.fromTo("#ph-{i} .ph-img", {{ scale: 1.0 }}, {{ scale: 1.06, duration: {d}, ease: "none" }}, {s});
-    tl.to("#ph-{i} .ph-layer", {{ opacity: 0, duration: 0.14, ease: "power2.in" }}, {round(e - 0.14, 3)});''')
+    tl.fromTo("#ph-{i} .ph-img", {{ scale: 1.0 }}, {{ scale: 1.06, duration: {d}, ease: "none" }}, {s});''')
+    if not p["chain_out"]:
+        ph_js.append(f'''    tl.to("#ph-{i} .ph-layer", {{ opacity: 0, duration: 0.14, ease: "power2.in" }}, {round(e - 0.14, 3)});''')
 
 write("compositions/photos.html", f"""<template>
   <style>
