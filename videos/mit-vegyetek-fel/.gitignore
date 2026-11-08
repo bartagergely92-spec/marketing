@@ -1,0 +1,7 @@
+# Nagy médiafájlok és munkafájlok: a Drive-on vannak, a scripts/prepare.sh állítja elő őket
+assets/
+work/
+renders/
+check/
+.hyperframes/
+node_modules/
